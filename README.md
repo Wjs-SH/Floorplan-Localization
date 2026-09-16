@@ -9,21 +9,7 @@ CAD 도면이나 미리 만든 LiDAR 지도 없이, 안내도에서 만든 2D �
 
 ## 파이프라인
 
-```mermaid
-flowchart LR
-  A[건물 안내도 사진] --> B[네비게이션 맵 · 의미지도]
-  C[LiDAR + FAST-LIO odom] --> D[누적 점군]
-  D --> E[회전 · 위치 · 축척 정합]
-  B --> E
-  B --> H[후보 위치별 기대 관측]
-  F[RGB 카메라] --> G[VLM 질문<br/>복도? 계단? 문?]
-  G --> I[의미 우도]
-  H --> I
-  E --> J[위치 후보 점수]
-  I --> J
-  J --> K[위치 · 방향]
-  J --> L[층 판별]
-```
+![위치추정 파이프라인](docs/images/pipeline.png)
 
 지도 생성은 [Floorplan-SemanticMap](https://github.com/Wjs-SH/Floorplan-SemanticMap)에서 다룹니다.
 
